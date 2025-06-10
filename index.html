@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Transparent Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      height: 100vh;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Courier New', Courier, monospace;
+      -webkit-app-region: drag;
+      user-select: none;
+    }
+
+    .window-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-app-region: no-drag;
+      cursor: pointer;
+    }
+
+    #minimizeBtn {
+      width: 20px;
+      height: 2px;
+      background-color: white;
+      border: none;
+      border-radius: 1px;
+      pointer-events: none; /* clicks pass to parent */
+      transition: transform 0.1s ease;
+    }
+
+    /* Hover scale on the inner line triggered by hover on outer container */
+    .window-controls:hover #minimizeBtn {
+      transform: scaleX(1.4);
+    }
+
+    .clock-box {
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    #clock {
+      font-size: 5rem;
+      letter-spacing: 0.1em;
+      margin: 0 0 10px;
+      font-family: 'Audiowide', cursive;
+    }
+
+    #date {
+      font-size: 1.8rem;
+      font-family: 'Orbitron', sans-serif;
+      opacity: 1;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Minimize Button with larger hitbox and hover animation -->
+  <div class="window-controls" id="minimizeControl">
+    <div id="minimizeBtn"></div>
+  </div>
+
+  <div class="clock-box">
+    <p id="clock">
+      <span id="hours">--</span><span class="colon">:</span><span id="minutes">--</span><span class="colon">:</span><span id="seconds">--</span> <span id="ampm">--</span>
+    </p>
+    <p id="date">Loading date...</p>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById("minimizeControl").addEventListener("click", () => {
+      ipcRenderer.send("minimize-window");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+      const ampmEl = document.getElementById("ampm");
+      const dateEl = document.getElementById("date");
+
+      function updateTime() {
+        const now = new Date();
+
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        const isAM = hours < 12;
+        hours = hours % 12 || 12;
+
+        hoursEl.textContent = hours.toString().padStart(2, '0');
+        minutesEl.textContent = minutes.toString().padStart(2, '0');
+        secondsEl.textContent = seconds.toString().padStart(2, '0');
+        ampmEl.textContent = isAM ? 'AM' : 'PM';
+
+        dateEl.textContent = now.toLocaleDateString(undefined, {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+      }
+
+      updateTime();
+      setInterval(updateTime, 1000);
+    });
+  </script>
+</body>
+</html>
+
