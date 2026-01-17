@@ -3,6 +3,7 @@ HOW TO RUN THE APPLICATION ON WINDOWS
 ****Important note****
 
 you either install it via thesee instructions or you use the installer under the section "releases"
+both versions are both minimisable, resizable and tell the correct time  
 
 
 
