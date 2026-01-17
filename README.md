@@ -1,6 +1,7 @@
 HOW TO RUN THE APPLICATION ON WINDOWS
 
-**important note, you either install it via thesee instructions or you use the installer under the section "releases"
+****important note****
+you either install it via thesee instructions or you use the installer under the section "releases"
 
 Install node.js and git from their websites
 
