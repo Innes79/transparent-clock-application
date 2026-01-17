@@ -12,6 +12,7 @@ https://github.com/Innes79/transparent-clock-application
 
 
 ****Option for manual install****
+
 Install node.js and git from their websites
 
 Go into your terminal and type “cd documents”
