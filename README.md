@@ -1,9 +1,17 @@
 HOW TO RUN THE APPLICATION ON WINDOWS
 
-****important note****
+****Important note****
 
 you either install it via thesee instructions or you use the installer under the section "releases"
 
+
+
+****option for .exe installer****
+https://github.com/Innes79/transparent-clock-application
+
+
+
+****Option for manual install****
 Install node.js and git from their websites
 
 Go into your terminal and type “cd documents”
