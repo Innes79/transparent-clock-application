@@ -8,7 +8,7 @@ you either install it via thesee instructions or you use the installer under the
 
 ****option for .exe installer****
 
-https://github.com/Innes79/transparent-clock-application
+https://github.com/Innes79/transparent-clock-application/releases
 
 
 
