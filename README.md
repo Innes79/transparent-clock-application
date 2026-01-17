@@ -1,33 +1,21 @@
-HOW TO RUN THE APPLICATION ON WINDOWS 
+HOW TO RUN THE APPLICATION ON WINDOWS
 
-go into file explorer and go to the home page
+Install node.js and git from their websites
 
-at the top you should see a text box that says documents 
+Go into your terminal and type “cd documents”
 
-remove that and type cmd
+Clone the repository, immediately after going into the documents folder copy and paste this “git clone https://github.com/Innes79/transparent-clock-application.git”
 
-git clone https://github.com/Innes79/transparent-clock-application.git
+Go into the folder that was created “cd transparent-clock-application”
 
-cd transparent-clock-application or whatever the folder that appeard is called
+Go onto a fresh windows powershell but run it as administrator and paste this in and then type y and enter “Set-ExecutionPolicy RemoteSigned -Scope CurrentUser”
 
-\transparent-clock-application>npm i -g pnpm
+An alternative to step 5 is, type this into your current powershell, doesn't have to be administrator, whatever one works for you “Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process”
 
-if an update is needed input the command 
+Once in type this (if an update is needed input the command that it gives you )“npm i -g pnpm”
 
-pnpm i to check if there are any more updates, if not continue if so update again with the command it tells you 
+After doing step 7 run this (if it gives you a warning with a yellow box around it run the command it gives you to pick the dependencies then press a to toggle them all and then enter to select, finally type the letter y to confirm) “pnpm approve-builds”
 
-pnpm approve-builds then press the a key on your keyboard and then press enter
+To confirm the operation went smooth type this to confirm “pnpm i”
 
-onece it asks you for your permission, click y to accept 
-
-pnpm i to confirm everthing went smoothly 
-
-pnpm start to launch 
-
-now to start the application when closed go back into the documents file 
-
-type cmd into the bar
-
-and finally type pnpm start to start the clock 
-
-and like that it is ready
+Finally to run everything type and after a few seconds the application should appear (if the application does not appear minimise your windows and see if it is on your desktop) “pnpm start”
